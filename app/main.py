@@ -53,7 +53,7 @@ def move():
 
     return {
         'move': move,
-        'taunt': 'imma go ' + move
+        'taunt': str(getTaunt())
     }
 
 
