@@ -1,4 +1,5 @@
 import bottle
+from walls import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
@@ -36,6 +37,11 @@ def move():
     data = bottle.request.json
     print data
     # TODO: Do things with data
+
+    # Check for wall collision
+    walls = Walls()
+    collision_results = walls.wallCollision(data)
+    print collision_results
 
     return {
         'move': 'north',
