@@ -1,4 +1,5 @@
 import bottle
+from utility import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
@@ -37,8 +38,17 @@ def move():
     print data
     # TODO: Do things with data
 
+    directions = {
+        'north':100,
+        'south':100,
+        'east':100,
+        'west':100
+    }
+
+    move = bestDirection(directions)
+
     return {
-        'move': 'north',
+        'move': move,
         'taunt': 'battlesnake-python!'
     }
 
@@ -46,12 +56,24 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
-    print data
+    print bottle.request
     # TODO: Do things with data
 
     return {
         'taunt': 'battlesnake-python!'
     }
+
+def bestDirection(directions):
+    bestDir = "north"
+    bestVal = 0
+    for key,value in directions.iteritems():
+        if value > bestVal:
+            bestVal = value
+            bestDir = key
+
+    return bestDir
+
+
 
 
 # Expose WSGI app (so gunicorn can find it)
