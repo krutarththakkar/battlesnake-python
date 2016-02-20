@@ -42,7 +42,7 @@ def move():
     # Check for wall collision
     walls = Walls()
     collision_results = walls.wallCollision(data)
-    print collision_results
+    print "wall collision: " + str(collision_results)
 
     directions = {
         'north':100,
