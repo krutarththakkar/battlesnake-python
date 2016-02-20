@@ -44,6 +44,14 @@ def getTaunt():
     
     return random.choice(bieberqoutes)
 
+def whichSnake(point, data):
+    for snake in data["snakes"]:
+        for snakePoint in data["coords"]:
+            if point == snakePoint:
+                return snake["id"]
+
+
+
 def getSelf(snakes):
     snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
