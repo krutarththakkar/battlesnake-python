@@ -1,5 +1,6 @@
 import bottle
 from walls import *
+from utility import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
@@ -36,6 +37,7 @@ def start():
 def move():
     data = bottle.request.json
     print data
+    createBoardObject(data)
     # TODO: Do things with data
 
 
@@ -86,4 +88,4 @@ def bestDirection(directions):
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
 if __name__ == '__main__':
-    bottle.run(application, host='127.0.0.1', port=8080)
+    bottle.run(application, host='127.0.0.1', port=8080, debug=True, reloader=True)
