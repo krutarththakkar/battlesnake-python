@@ -57,7 +57,7 @@ def move():
 
     return {
         'move': directions.bestDirection(),
-        'taunt': 'imma go ' + move
+        'taunt': 'imma go ' 
     }
 
 
