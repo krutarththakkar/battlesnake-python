@@ -2,6 +2,7 @@ import bottle
 from utility import *
 from walls import *
 from utility import *
+from snake import *
 
 from directions import *
 
@@ -41,8 +42,12 @@ def start():
 def move():
     data = bottle.request.json
     print data
-
-    mySnake = getSelf(data['snakes'])
+    
+    snakes = []
+    for snake in data["snakes"]:
+        snakes.append(Snake(snake))
+    
+    mySnake = getSelf(snakes, snakeId)
 
     # Access board data as 2d array Board[][]
     # Use boardTypes to determine objects on board

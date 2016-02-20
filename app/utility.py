@@ -49,14 +49,10 @@ def whichSnake(point, data):
         for snakePoint in data["coords"]:
             if point == snakePoint:
                 return snake["id"]
-
-
-
-def getSelf(snakes):
-    snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
-
+                
+def getSelf(snakes, snakeId):
     for snake in snakes:
-        if snake['id'] == snakeId:
+        if snake.id == snakeId:
             return snake
 
     return False
