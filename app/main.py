@@ -39,7 +39,7 @@ def move():
 
     directions = {
         'north':100,
-        'south':200,
+        'south':100,
         'east':100,
         'west':100
     }
