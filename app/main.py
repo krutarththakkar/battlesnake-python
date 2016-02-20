@@ -42,20 +42,13 @@ def move():
     data = bottle.request.json
     print data
 
-    # Access board data as 2d array Board[][]
-    # Use boardTypes to determine objects on board
-    Board = createBoardObject(data)
-    # TODO: Do things with data
-
-    directions = Directions()
-
     mySnake = getSelf(data['snakes'])
 
     # Access board data as 2d array Board[][]
     # Use boardTypes to determine objects on board
     Board = createBoardObject(data)
 
-    # TODO: Do things with data
+    directions = Directions()
 
     # Check for wall collision
     walls = Walls()
