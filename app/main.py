@@ -1,4 +1,5 @@
 import bottle
+from walls import *
 
 from directions import *
 
@@ -39,10 +40,13 @@ def move():
     print data
     # TODO: Do things with data
 
+    # Check for wall collision
+    walls = Walls()
+    collision_results = walls.wallCollision(data)
+    print collision_results
 
     directions = Directions()
 
-    move = directions.bestDirection()
     return {
         'move': move,
         'taunt': 'imma go ' + move

@@ -1,7 +1,7 @@
 class Directions:
     def __init__(self):
         self.north = 100
-        self.south = 101
+        self.south = 100
         self.east = 100
         self.west = 100
 
