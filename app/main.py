@@ -41,6 +41,11 @@ def move():
     print "HEY"
     data = bottle.request.json
     print data
+
+    directions = Directions()
+
+    mySnake = getSelf(data['snakes'])
+
     createBoardObject(data)
     # TODO: Do things with data
 
@@ -49,8 +54,7 @@ def move():
     collision_results = walls.wallCollision(data)
     print "wall collision: " + str(collision_results)
 
-    directions = Directions()
-
+    move = directions.bestDirection()
     return {
         'move': move,
         'taunt': str(getTaunt())
