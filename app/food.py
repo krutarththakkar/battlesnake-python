@@ -7,7 +7,7 @@ class Foods():
 
 	def distanceToFood(self, snake):
 		foods = []
-		head = snake["coords"][1]
+		head = snake.head
 		for food in self.foods:
 			x =  head[0] - food[0]
 			y =  head[1] - food[1]
@@ -25,7 +25,7 @@ class Foods():
 					myDistance[x] = 100
 
 				if myDistance[x] == snakeDistance[x]:
-					if len(snake['coords']) > len(mySnake['coords']):
+					if len(snake.coordinates) > mySnake.getLength():
 						myDistance[x] = 100
 
 		closest = []
@@ -38,7 +38,7 @@ class Foods():
 		return closest
 
 	def goTowards(self, closest, direction, mySnake):
-		head = mySnake["coords"][1]
+		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
 			if closest[x]:
 				print "i am closest"
