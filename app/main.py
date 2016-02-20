@@ -71,12 +71,6 @@ def end():
         'taunt': 'battlesnake-python!'
     }
 
-def getSelf(snakes):
-    for snake in snakes:
-        if snake['id'] == snakeId:
-            return snake
-
-    return False
 
 
 
