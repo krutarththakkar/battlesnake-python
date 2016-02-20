@@ -45,14 +45,14 @@ class Foods():
 				food = self.foods[x]
 
 				if food[1] < head[1]:
-					direction.north *= (1 + 100/closest[x])
+					direction.north *= (1 + 10/closest[x])
 				elif food[1] > head[1]:
-					direction.south *= (1 + 100/closest[x])
+					direction.south *= (1 + 10/closest[x])
 
 				if food[0] > head[0]:
-					direction.east *= (1 + 100/closest[x])
+					direction.east *= (1 + 10/closest[x])
 				elif food[0] < head[0]:
-					direction.west *= (1 + 100/closest[x])
+					direction.west *= (1 + 10/closest[x])
 		return direction
 
 
