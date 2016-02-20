@@ -3,7 +3,7 @@ from utility import *
 class Walls():
 	#def __init__(self):
     #def distanceToWalls:
-    def wallCollision(self, game_json, direction):
+    def wallCollision(self, game_json, direction, mySnake):
     	#if game_json == "":
     	#	game_json = "{u'height': 10, u'snakes': [{u'age': 0, u'name': u'', u'health': 100, u'message': u'', u'status': u'alive', u'id': u'72ad0c75-244b-4e30-9169-4584cf4fee28', u'taunt': u'', u'coords': [[2, 2], [2, 2], [2, 2]], u'kills': 0}], u'width': 10, u'turn': 0, u'game': 1, u'food': [], u'mode': u'classic'}";
     	
@@ -12,10 +12,11 @@ class Walls():
     	snakes = game_json["snakes"]
     	#print "snakes " + str(snakes)
 
-    	our_snake = getSelf(snakes)
+    	#our_snake = getSelf(snakes)
     	#print "our snake " + str(our_snake)
-    	snake_head = our_snake["coords"][0]
+    	#snake_head = our_snake["coords"][0]
     	#print "head " + str(snake_head)
+    	snake_head = mySnake["coords"][0]
 
     	width = game_json["width"]
     	height = game_json["height"]
