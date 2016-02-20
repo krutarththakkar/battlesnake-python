@@ -1,5 +1,7 @@
 import bottle
 
+from directions import *
+
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
 @bottle.route('/static/<path:path>')
@@ -37,18 +39,13 @@ def move():
     print data
     # TODO: Do things with data
 
-    directions = {
-        'north':100,
-        'south':100,
-        'east':100,
-        'west':100
-    }
 
-    move = bestDirection(directions)
+    directions = Directions()
 
+    move = directions.bestDirection()
     return {
         'move': move,
-        'taunt': 'battlesnake-python!'
+        'taunt': 'imma go ' + move
     }
 
 
@@ -62,15 +59,6 @@ def end():
         'taunt': 'battlesnake-python!'
     }
 
-def bestDirection(directions):
-    bestDir = "north"
-    bestVal = 0
-    for key,value in directions.iteritems():
-        if value > bestVal:
-            bestVal = value
-            bestDir = key
-
-    return bestDir
 
 
 
