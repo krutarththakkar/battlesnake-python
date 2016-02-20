@@ -3,7 +3,7 @@ from utility import *
 from walls import *
 from utility import *
 from snake import *
-
+from food import *
 from directions import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
@@ -30,7 +30,6 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-    print data
     # TODO: Do things with data
 
     return {
@@ -49,16 +48,20 @@ def move():
     
     mySnake = getSelf(snakes, snakeId)
 
+    directions = Directions()
+    foods = Foods(data['food'])
+
+    directions = foods.goTowards(foods.amClosest(data['snakes'], mySnake), directions, mySnake)
+
     # Access board data as 2d array Board[][]
     # Use boardTypes to determine objects on board
     Board = createBoardObject(data)
 
-    directions = Directions()
 
     # Check for wall collision
-    walls = Walls()
-    collision_results = walls.wallCollision(data)
-    print "wall collision: " + str(collision_results)
+    #walls = Walls()
+    #collision_results = walls.wallCollision(data)
+    #print "wall collision: " + str(collision_results)
 
     move = directions.bestDirection()
     return {
@@ -74,7 +77,7 @@ def end():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': str(getTaunt())
     }
 
 
