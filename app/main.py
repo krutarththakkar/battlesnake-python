@@ -27,7 +27,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'RBM is gong to win ' + data['game']
+        'taunt': 'RBM is gong to win ' + str(data['game'])
     }
 
 
