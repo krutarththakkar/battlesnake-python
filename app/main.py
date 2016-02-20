@@ -2,6 +2,7 @@ import bottle
 from utility import *
 from walls import *
 from utility import *
+from snake import *
 from food import *
 from directions import *
 
@@ -39,10 +40,16 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+    print data
+    
+    snakes = []
+    for snake in data["snakes"]:
+        snakes.append(Snake(snake))
+    
+    mySnake = getSelf(snakes, snakeId)
 
     directions = Directions()
     foods = Foods(data['food'])
-    mySnake = getSelf(data['snakes'])
 
     directions = foods.goTowards(foods.amClosest(data['snakes'], mySnake), directions, mySnake)
 
@@ -50,11 +57,9 @@ def move():
     # Use boardTypes to determine objects on board
     Board = createBoardObject(data)
 
-
     # Check for wall collision
-    #walls = Walls()
-    #collision_results = walls.wallCollision(data)
-    #print "wall collision: " + str(collision_results)
+    walls = Walls()
+    directions = walls.wallCollision(data, directions, mySnake)
 
     move = directions.bestDirection()
     return {
