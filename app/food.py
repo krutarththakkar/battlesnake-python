@@ -49,14 +49,14 @@ class Foods():
 				ewdiff = food[0] - head[0]
 
 				if nsdiff < 0:
-					direction.north *= (1 + 10/abs(nsdiff))
+					direction.north *= (1 + 10/closest[x])
 				elif nsdiff > 0:
-					direction.south *= (1 + 10/abs(nsdiff))
+					direction.south *= (1 + 10/closest[x])
 
 				if ewdiff > 0:
-					direction.east *= (1 + 10/abs(nsdiff))
+					direction.east *= (1 + 10/closest[x])
 				elif ewdiff < 0:
-					direction.west *= (1 + 10/abs(nsdiff))
+					direction.west *= (1 + 10/closest[x])
 		return direction
 
 
