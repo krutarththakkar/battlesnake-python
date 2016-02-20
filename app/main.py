@@ -3,6 +3,7 @@ from walls import *
 from utility import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
+boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -35,10 +36,12 @@ def start():
 
 @bottle.post('/move')
 def move():
-    print "HEY"
     data = bottle.request.json
     print data
-    createBoardObject(data)
+
+    # Access board data as 2d array Board[][]
+    # Use boardTypes to determine objects on board
+    Board = createBoardObject(data)
     # TODO: Do things with data
 
 
