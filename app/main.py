@@ -35,6 +35,7 @@ def start():
 
 @bottle.post('/move')
 def move():
+    print "HEY"
     data = bottle.request.json
     print data
     createBoardObject(data)
