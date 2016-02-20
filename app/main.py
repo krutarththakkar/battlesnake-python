@@ -55,7 +55,7 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
-    print data
+    print bottle.request
     # TODO: Do things with data
 
     return {
