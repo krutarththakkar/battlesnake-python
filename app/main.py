@@ -6,6 +6,7 @@ from food import *
 from directions import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
+boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -38,16 +39,17 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+
     directions = Directions()
     foods = Foods(data['food'])
     mySnake = getSelf(data['snakes'])
 
     directions = foods.goTowards(foods.amClosest(data['snakes'], mySnake), directions, mySnake)
 
+    # Access board data as 2d array Board[][]
+    # Use boardTypes to determine objects on board
+    Board = createBoardObject(data)
 
-
-    #createBoardObject(data)
-    # TODO: Do things with data
 
     # Check for wall collision
     #walls = Walls()
