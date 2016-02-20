@@ -50,11 +50,9 @@ def move():
     # Use boardTypes to determine objects on board
     Board = createBoardObject(data)
 
-
     # Check for wall collision
-    #walls = Walls()
-    #collision_results = walls.wallCollision(data)
-    #print "wall collision: " + str(collision_results)
+    walls = Walls()
+    directions = walls.wallCollision(data, directions)
 
     move = directions.bestDirection()
     return {
