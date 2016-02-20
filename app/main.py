@@ -1,5 +1,6 @@
 import bottle
 from utility import *
+from walls import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
@@ -38,6 +39,12 @@ def move():
     print data
     # TODO: Do things with data
 
+
+    # Check for wall collision
+    walls = Walls()
+    collision_results = walls.wallCollision(data)
+    print collision_results
+
     directions = {
         'north':100,
         'south':100,
@@ -46,6 +53,7 @@ def move():
     }
 
     move = bestDirection(directions)
+
 
     return {
         'move': move,
