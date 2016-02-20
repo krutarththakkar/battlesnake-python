@@ -52,6 +52,11 @@ class Walls():
     	#for snake in data["snakes"]:
         #	snakes.append(Snake(snake))
 
+        snakes = game_json["snakes"]
+        for x in xrange(0, len(snakes)):
+			print " x " + x 
+
+
 
     	return direction
 
