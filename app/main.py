@@ -53,6 +53,7 @@ def move():
 
     directions = foods.goTowards(foods.amClosest(data['snakes'], mySnake), directions, mySnake)
 
+
     # Access board data as 2d array Board[][]
     # Use boardTypes to determine objects on board
     Board = createBoardObject(data)

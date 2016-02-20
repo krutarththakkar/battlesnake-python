@@ -44,15 +44,19 @@ class Foods():
 				print "i am closest to " + str(closest[x])
 				food = self.foods[x]
 
-				if food[1] < head[1]:
-					direction.north *= (1 + 10/closest[x])
-				elif food[1] > head[1]:
-					direction.south *= (1 + 10/closest[x])
+				nsdiff = food[1] - head[1]
 
-				if food[0] > head[0]:
-					direction.east *= (1 + 10/closest[x])
-				elif food[0] < head[0]:
-					direction.west *= (1 + 10/closest[x])
+				ewdiff = food[0] - head[0]
+
+				if nsdiff < 0:
+					direction.north *= (1 + 10/abs(nsdiff))
+				elif nsdiff > 0:
+					direction.south *= (1 + 10/abs(nsdiff))
+
+				if ewdiff > 0:
+					direction.east *= (1 + 10/abs(nsdiff))
+				elif ewdiff < 0:
+					direction.west *= (1 + 10/abs(nsdiff))
 		return direction
 
 
