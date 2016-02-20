@@ -41,18 +41,18 @@ class Foods():
 		head = mySnake["coords"][0]
 		for x in xrange(0, len(self.foods)):
 			if closest[x]:
-				print "i am closest"
+				print "i am closest to " + str(closest[x])
 				food = self.foods[x]
 
 				if food[0] < head[0]:
-					direction.north *= (1 + 1/closest[x])
+					direction.north *= 1.5
 				elif food[0] > head[0]:
-					direction.south *= (1 + 1/closest[x])
+					direction.south *= 1.5
 
 				if food[1] < head[1]:
-					direction.east *= (1 + 1/closest[x])
+					direction.east *= 1.5
 				elif food[1] > head[1]:
-					direction.west *= (1 + 1/closest[x])
+					direction.west *= 1.5
 		return direction
 
 
