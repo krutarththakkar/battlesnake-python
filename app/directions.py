@@ -5,6 +5,9 @@ class Directions:
         self.east = 100
         self.west = 100
 
+    def toString(self):
+        return 'N:'+str(self.north) + 'S:'+str(self.south) + 'E:'+str(self.east) + 'W:'+str(self.west)
+
     def bestDirection(self):
         bestDir = "north"
         bestVal = 0

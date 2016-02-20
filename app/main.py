@@ -56,7 +56,7 @@ def move():
     #collision_results = walls.wallCollision(data)
     #print "wall collision: " + str(collision_results)
 
-    print directions
+    print directions.toString()
 
     move = directions.bestDirection()
     return {
