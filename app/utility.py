@@ -2,12 +2,13 @@ import json
 import math
 import random
 
+boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
+
 def distanceBetweenTwoPoints(point1, point2):
     return  (abs((point2[0] - point1[0])) + abs((point2[1] - point1[1])))
 
 
 def createBoardObject(data):
-    global boardTypes
     Board = [[0 for x in range(data["height"])] for x in range(data["width"])]
 
     # Start off as empty
