@@ -40,7 +40,7 @@ class Foods():
 	def goTowards(self, closest, direction, mySnake):
 		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
-			if closest[x]:
+			if closest[x] >= 0:
 				print "i am closest to " + str(closest[x])
 				food = self.foods[x]
 
