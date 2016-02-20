@@ -47,3 +47,16 @@ class Walls():
     	#print "result_json: " + str(result_json)
     	#return result_json 
     	return direction
+
+
+
+    def snakeCollision(self, game_json, direction, mySnake):
+    	#snakes = []
+    	#for snake in data["snakes"]:
+        #	snakes.append(Snake(snake))
+
+
+    	return direction
+
+
+
