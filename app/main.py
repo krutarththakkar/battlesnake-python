@@ -1,4 +1,5 @@
 import bottle
+from utility import *
 from walls import *
 from utility import *
 
@@ -40,6 +41,11 @@ def move():
     print "HEY"
     data = bottle.request.json
     print data
+
+    directions = Directions()
+
+    mySnake = getSelf(data['snakes'])
+
     createBoardObject(data)
     # TODO: Do things with data
 
@@ -48,10 +54,9 @@ def move():
     collision_results = walls.wallCollision(data)
     print "wall collision: " + str(collision_results)
 
-    directions = Directions()
 
     return {
-        'move': move,
+        'move': directions.bestDirection(),
         'taunt': 'imma go ' + move
     }
 
@@ -66,6 +71,12 @@ def end():
         'taunt': 'battlesnake-python!'
     }
 
+def getSelf(snakes):
+    for snake in snakes:
+        if snake['id'] == snakeId:
+            return snake
+
+    return False
 
 
 
