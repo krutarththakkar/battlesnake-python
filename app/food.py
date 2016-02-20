@@ -25,7 +25,7 @@ class Foods():
 					myDistance[x] = 100
 
 				if myDistance[x] == snakeDistance[x]:
-					if len(snake.coordinates) > mySnake.getLength():
+					if len(snake.coordinates) > mySnake.length:
 						myDistance[x] = 100
 
 		closest = []
