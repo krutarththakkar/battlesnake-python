@@ -1,5 +1,6 @@
 import bottle
 
+snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -22,18 +23,18 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-
+    print data
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': 'RBM is gong to win ' + data['game']
     }
 
 
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-
+    print data
     # TODO: Do things with data
 
     return {
@@ -45,7 +46,7 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
-
+    print data
     # TODO: Do things with data
 
     return {
