@@ -44,6 +44,8 @@ def move():
 
     directions = Directions()
 
+    mySnake = getSelf(data['snakes'])
+
     createBoardObject(data)
     # TODO: Do things with data
 
@@ -69,6 +71,12 @@ def end():
         'taunt': 'battlesnake-python!'
     }
 
+def getSelf(snakes):
+    for snake in snakes:
+        if snake['id'] == snakeId:
+            return snake
+
+    return False
 
 
 
