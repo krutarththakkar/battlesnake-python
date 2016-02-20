@@ -3,7 +3,7 @@ import math
 import random
 
 def distanceBetweenTwoPoints(point1, point2):
-	return math.sqrt( (point2[0] - point1[0])**2 + (point2[1] - point1[1])**2 )
+	return  (abs((point2[0] - point1[0])) + abs((point2[1] - point1[1])))
 
 def createBoardObject(data):
     print data
@@ -22,4 +22,3 @@ def getSelf(snakes):
             return snake
 
     return False
-
