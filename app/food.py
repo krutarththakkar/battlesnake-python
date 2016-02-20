@@ -31,9 +31,9 @@ class Foods():
 		closest = []
 		for distance in myDistance:
 			if distance < 100:
-				closest.append(True)
+				closest.append(distance)
 			else:
-				closest.append(False)
+				closest.append(-1)
 
 		return closest
 
@@ -45,14 +45,14 @@ class Foods():
 				food = self.foods[x]
 
 				if food[0] < head[0]:
-					direction.north *= 1.5
+					direction.north *= (1 + 1/closest[x])
 				elif food[0] > head[0]:
-					direction.south *= 1.5
+					direction.south *= (1 + 1/closest[x])
 
 				if food[1] < head[1]:
-					direction.east *= 1.5
+					direction.east *= (1 + 1/closest[x])
 				elif food[1] > head[1]:
-					direction.west *= 1.5
+					direction.west *= (1 + 1/closest[x])
 		return direction
 
 
