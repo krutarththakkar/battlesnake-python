@@ -36,7 +36,7 @@ class Walls():
     		north_result = 0
     		direction.north = 0		
 
-    	if snake_head[1] == height - 1: # head on top side, don't go north
+    	if snake_head[1] == height - 1: # head on bottom side, don't go north
     		south_result = 0	
     		direction.south = 0
 
@@ -47,16 +47,38 @@ class Walls():
 
 
 
-    def snakeCollision(self, game_json, direction, mySnake):
+    def snakeCollision(self, game_json, direction, mySnake, snakes):
     	#snakes = []
     	#for snake in data["snakes"]:
         #	snakes.append(Snake(snake))
 
-        snakes = game_json["snakes"]
-        for x in xrange(0, len(snakes)):
-			print " x " + x 
+        #snakes = game_json["snakes"]
+        #print "len " + str(len(snakes))
+        for s in xrange(0, len(snakes)): # for each snake in game
+			#print " snake " + " " + str(s)
+			snake = snakes[s]
+			point_coords = snake.coordinates
+			#print " s " + str(point_coords)
 
+			for c in xrange(0, len(point_coords)):	# fore each point in snake
+				point_coord = snake.coordinates[c]
+				#print " point " + str(point_coord[0]) +" " + str(point_coord[1])
 
+				if mySnake.head[0] - 1 == point_coord[0] and mySnake.head[1] == point_coord[1]: # snake on left
+					direction.west = 0
+		    		print "Snake on left"
+
+		    	if mySnake.head[0] + 1 == point_coord[0] and mySnake.head[1] == point_coord[1]: # snake on right
+		    		direction.east = 0
+		    		print "Snake on right"
+
+		    	if mySnake.head[0] == point_coord[0] and mySnake.head[1] + 1 == point_coord[1]: # snake on top
+					direction.north = 0	
+					print "Snake above"	
+
+		    	if mySnake.head[0] == point_coord[0] and mySnake.head[1] - 1 == point_coord[1]: # head on bottom side, don't go north	
+					direction.south = 0
+					print "Snake below"
 
     	return direction
 
