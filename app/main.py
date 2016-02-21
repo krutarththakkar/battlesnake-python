@@ -61,11 +61,14 @@ def move():
     # Check for wall collision
     walls = Walls()
     directions = walls.wallCollision(data, directions, mySnake, snakes)
-    directions = walls.snakeCollision(data, Board, directions, mySnake) 
-
+    directions = walls.snakeCollision(data, Board, directions, mySnake)
+    #Check for dead ends
+    directions = walls.deadEndDetection(Board, mySnake, directions)
 
     ## Check for attack opportunities
     directions = mySnake.attack(directions, snakes)
+
+
 
 
     print directions.toString()
