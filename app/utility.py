@@ -2,7 +2,7 @@ import json
 import math
 import random
 
-boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
+boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4, 'Gold':5}
 
 def distanceBetweenTwoPoints(point1, point2):
     return  (abs((point2[0] - point1[0])) + abs((point2[1] - point1[1])))

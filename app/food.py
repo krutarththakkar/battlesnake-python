@@ -1,9 +1,10 @@
 import json
 
 class Foods():
-	def __init__(self, foods):
+	def __init__(self, foods, wantFood):
 		print foods
 		self.foods = foods
+		self.want = wantFood
 
 	def distanceToFood(self, snake):
 		foods = []
@@ -38,6 +39,7 @@ class Foods():
 		return closest
 
 	def goTowards(self, closest, direction, mySnake):
+		foodWeight = 10
 		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
 			if closest[x] >= 0:
@@ -49,14 +51,14 @@ class Foods():
 				ewdiff = food[0] - head[0]
 
 				if nsdiff < 0:
-					direction.north *= (1 + 10/closest[x])
+					direction.north *= (1 + foodWeight/closest[x])
 				elif nsdiff > 0:
-					direction.south *= (1 + 10/closest[x])
+					direction.south *= (1 + foodWeight/closest[x])
 
 				if ewdiff > 0:
-					direction.east *= (1 + 10/closest[x])
+					direction.east *= (1 + foodWeight/closest[x])
 				elif ewdiff < 0:
-					direction.west *= (1 + 10/closest[x])
+					direction.west *= (1 + foodWeight/closest[x])
 		return direction
 
 

@@ -1,46 +1,75 @@
 import json
-import utility
-our_snakeid = '72ad0c75-244b-4e30-9169-4584cf4fee28'
 
-def distanceToGold(snakesinfo):
-    directions = {'north': 0,
-                    'east': 0,
-                    'south': 0,
-                    'west': 0
-                }
+class Golds():
+	def __init__(self, golds, wantFood):
+		print golds
+		self.golds = golds
+		self.want = wantFood
 
-    dist = [] # Distance for other snakes
-    for i in snakesinfo['snakes']:
-        if i['id'] != our_snakeid:
-            dist.append(utility.distanceBetweenTwoPoints(i['coords'][0], snakesinfo['gold']))
+	def distanceToGold(self, snake):
+		golds = []
+		head = snake.head
+		for gold in self.golds:
+			x =  head[0] - gold[0]
+			y =  head[1] - gold[1]
+			golds.append(abs(x) + abs(y))
+		return golds
 
-        else:
-            our_dist = utility.distanceBetweenTwoPoints(i['coords'][0], snakesinfo['gold'])
-            our_coords = i['coords'][0]
-    print dist
-    print our_dist
 
-    go_for_the_gold = True
+	def amClosest(self, snakes, mySnake):
+		myDistance = self.distanceToGold(mySnake)
+		for snake in snakes:
+			snakeDistance = self.distanceToGold(snake)
 
-    for i in dist:
-        if our_dist < i: 
-            print 'yay our distance is less go for the gold'
-            print snakesinfo['gold'][0]
-            print our_coords[0]
-            east_west = our_coords[0] - snakesinfo['gold'][0]
-            north_south = our_coords[1] - snakesinfo['gold'][1] 
-            print 'east_west %s north_south%s' % (east_west, north_south)
-            if east_west > 0 and directions['west'] < 100:
-                directions['west'] += 100
-            elif east_west < 0 and directions['east'] < 100:
-                directions['east'] += 100 
+			for x in xrange(0,len(snakeDistance)):
+				if myDistance[x] > snakeDistance[x]:
+					myDistance[x] = 100
 
-            if north_south > 0  and directions['north'] < 100:
-                directions['north'] += 100
-            elif north_south < 0  and directions['south'] < 100:
-                directions['south'] += 100 
-        else:
-            print 'damn it don\'t go for the gold'
-            return {0,0,0,0}
-        if go_for_the_gold is True:
-            return{directions['north'], directions['east'], directions['south'], directions['west']}
+				if myDistance[x] == snakeDistance[x]:
+					if len(snake.coordinates) > mySnake.length:
+						myDistance[x] = 100
+
+		closest = []
+		for distance in myDistance:
+			if distance < 100:
+				closest.append(distance)
+			else:
+				closest.append(-1)
+
+		return closest
+
+	def goTowards(self, closest, direction, mySnake):
+		goldWeight = 10
+		head = mySnake.head
+		for x in xrange(0, len(self.golds)):
+			if closest[x] >= 0:
+				print "i am closest to " + str(closest[x])
+				gold = self.golds[x]
+
+				nsdiff = gold[1] - head[1]
+
+				ewdiff = gold[0] - head[0]
+
+				if nsdiff < 0:
+					direction.north *= (1 + goldWeight/closest[x])
+				elif nsdiff > 0:
+					direction.south *= (1 + goldWeight/closest[x])
+
+				if ewdiff > 0:
+					direction.east *= (1 + goldWeight/closest[x])
+				elif ewdiff < 0:
+					direction.west *= (1 + goldWeight/closest[x])
+		return direction
+
+
+
+
+
+
+
+
+
+
+
+
+
