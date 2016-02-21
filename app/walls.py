@@ -151,10 +151,10 @@ class Walls():
             canGoRight = True
             if leftOfHead < 0:
                 canGoLeft = False
-                # We are against the left wall
+                print "We are against the left wall"
             if rightOfHead == len(board):
                 canGoRight = False
-                # We are against the right wall
+                print "We are against the right wall"
 
             if board[leftOfHead][i] != boardTypes['Empty'] or board[leftOfHead][i] != boardTypes['Food'] or \
                             board[leftOfHead][i] != boardTypes['Gold']:
@@ -168,7 +168,14 @@ class Walls():
                 deadEndDetectedNorth = False
 
         # Check South
+
         for i in xrange(head[1] + 1, len(board[0])):
+            print "deadend South"
+            print i
+            print head[1] + 1
+            print len(board[0])
+            print board[head[0]][i]
+
             if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
                 distanceToBlockSouth = distanceToBlockSouth + 1
             else:
@@ -183,10 +190,10 @@ class Walls():
             canGoRight = True
             if leftOfHead < 0:
                 canGoLeft = False
-                # We are against the left wall
+                print "We are against the left wall"
             if rightOfHead == len(board):
                 canGoRight = False
-                # We are against the right wall
+                print "We are against the right wall"
 
             if board[leftOfHead][i] != boardTypes['Empty'] or board[leftOfHead][i] != boardTypes['Food'] or \
                             board[leftOfHead][i] != boardTypes['Gold']:
@@ -215,10 +222,10 @@ class Walls():
             canGoDown = True
             if aboveHead < 0:
                 canGoUp = False
-                # We are against the top wall
+                print "We are against the top wall"
             if belowHead == len(board[0]):
                 canGoDown = False
-                # We are against the right wall
+                print "We are against the right wall"
 
             if board[i][aboveHead] != boardTypes['Empty'] or board[i][aboveHead] != boardTypes['Food'] or board[i][
                 aboveHead] != boardTypes['Gold']:
@@ -248,10 +255,10 @@ class Walls():
             canGoDown = True
             if aboveHead < 0:
                 canGoUp = False
-                # We are against the top wall
+                print "We are against the top wall"
             if belowHead == len(board[0]):
                 canGoDown = False
-                # We are against the right wall
+                print "We are against the right wall"
 
             if board[i][aboveHead] != boardTypes['Empty'] or board[i][aboveHead] != boardTypes['Food'] or board[i][
                 aboveHead] != boardTypes['Gold']:
