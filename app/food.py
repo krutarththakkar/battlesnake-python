@@ -2,7 +2,7 @@ import json
 
 class Foods():
 	def __init__(self, foods, wantFood):
-		print foods
+		#print foods
 		self.foods = foods
 		self.want = wantFood
 
@@ -43,7 +43,7 @@ class Foods():
 		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
 			if closest[x] >= 0:
-				print "i am closest to " + str(closest[x])
+				#print "i am closest to " + str(closest[x])
 				food = self.foods[x]
 
 				nsdiff = food[1] - head[1]

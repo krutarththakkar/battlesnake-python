@@ -12,7 +12,7 @@ class Snake():
         self.length = len(self.coordinates)
         
     def shouldAttack(self, enemySnake):
-        if self.length < enemySnake.length:
+        if self.length <= enemySnake.length:
             return False
 	    
         if distanceBetweenTwoPoints(self.head, enemySnake.head) < 3:

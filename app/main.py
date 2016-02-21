@@ -44,16 +44,15 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    print data
     
     snakes = []
     for snake in data["snakes"]:
         snakes.append(Snake(snake))
     
     mySnake = getSelf(snakes, snakeId)
-	
     directions = Directions()
     foods = Foods(data['food'], wantFood)
+    board = createBoardObject(data, snakes)
 
     directions = foods.goTowards(foods.amClosest(snakes, mySnake), directions, mySnake)
 
@@ -61,19 +60,12 @@ def move():
         golds = Foods(data['gold'], wantGold)
         directions = golds.goTowards(golds.amClosest(snakes, mySnake), directions, mySnake)
 
-    print directions.toString()
-
-
-    # Access board data as 2d array Board[][]
-    # Use boardTypes to determine objects on board
-    Board = createBoardObject(data, snakes)
-
-    # Check for wall collision
+    # Check for collision
     walls = Walls()
     directions = walls.wallCollision(data, directions, mySnake, snakes)
-    directions = walls.snakeCollision(data, Board, directions, mySnake)
+    directions = walls.snakeCollision(data, board, directions, mySnake)
     #Check for dead ends
-    directions = walls.deadEndDetection(Board, mySnake, directions)
+    directions = walls.deadEndDetection(board, mySnake, directions)
 
     ## Check for attack opportunities
     directions = mySnake.attack(directions, snakes)
@@ -81,10 +73,10 @@ def move():
 
 
 
-    print directions.toString()
+    print "Direction = " + directions.toString()
 
     move = directions.bestDirection()
-    print move
+    print "Move =" + move
     return {
         'move': move,
         'taunt': str(getTaunt())

@@ -120,6 +120,7 @@ class Walls():
 
 
     def deadEndDetection(self, board, mySnake, direction):
+
         head = mySnake.head
         leftOfHead = head[0] - 1
         rightOfHead = head[0] + 1
@@ -135,33 +136,37 @@ class Walls():
         distanceToBlockWest = 0
 
         # Check North
-        for i in range(head[1] - 1, -1, -1):
-            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
-                distanceToBlockNorth = distanceToBlockNorth + 1
-            else:
+        for i in range(aboveHead, -1, -1):
+            if board[head[0]][i] == boardTypes['Snake_Head'] or board[head[0]][i] == boardTypes['Snake_Body'] or \
+                            board[head[0]][i] == boardTypes['Wall']:
                 break
+            else:
+                distanceToBlockNorth = distanceToBlockNorth + 1
 
         distanceToBlockNorth = head[1] - distanceToBlockNorth
-        for i in range(head[1] - 1, distanceToBlockNorth - 1, -1):
+        for i in range(aboveHead, distanceToBlockNorth - 1, -1):
 
             if not deadEndDetectedNorth:
                 break
 
             canGoLeft = True
             canGoRight = True
+
             if leftOfHead < 0:
                 canGoLeft = False
                 print "We are against the left wall"
+            else:
+                if board[leftOfHead][i] == boardTypes['Wall'] or board[leftOfHead][i] == boardTypes['Snake_Body'] or \
+                            board[leftOfHead][i] == boardTypes['Snake_Head']:
+                    canGoLeft = False
             if rightOfHead == len(board):
                 canGoRight = False
                 print "We are against the right wall"
+            else:
+                if board[rightOfHead][i] == boardTypes['Wall'] or board[rightOfHead][i] == boardTypes['Snake_Body'] or \
+                            board[rightOfHead][i] == boardTypes['Snake_Head']:
+                    canGoLeft = False
 
-            if board[leftOfHead][i] != boardTypes['Empty'] or board[leftOfHead][i] != boardTypes['Food'] or \
-                            board[leftOfHead][i] != boardTypes['Gold']:
-                canGoLeft = False
-            if board[rightOfHead][i] != boardTypes['Empty'] or board[rightOfHead][i] != boardTypes['Food'] or \
-                            board[rightOfHead][i] != boardTypes['Gold']:
-                canGoLeft = False
             if not canGoLeft and not canGoRight:
                 deadEndDetectedNorth = True
             else:
@@ -169,110 +174,109 @@ class Walls():
 
         # Check South
 
-        for i in xrange(head[1] + 1, len(board[0])):
-            #print "deadend South"
-            #print i
-            #print head[1] + 1
-            #print len(board[0])
-            #print board[head[0]][i]
+        for i in xrange(belowHead, len(board[0])):
 
-            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
-                distanceToBlockSouth = distanceToBlockSouth + 1
-            else:
+            if board[head[0]][i] == boardTypes['Snake_Head'] or board[head[0]][i] == boardTypes['Snake_Body'] or \
+                            board[head[0]][i] == boardTypes['Wall']:
                 break
+            else:
+                distanceToBlockSouth = distanceToBlockSouth + 1
 
-        for i in xrange(head[1] + 1, len(board[0]) - distanceToBlockSouth):
+        for i in xrange(belowHead, belowHead + distanceToBlockSouth):
 
             if not deadEndDetectedSouth:
                 break
 
             canGoLeft = True
             canGoRight = True
+
             if leftOfHead < 0:
                 canGoLeft = False
                 print "We are against the left wall"
+            else:
+                if board[leftOfHead][i] == boardTypes['Wall'] or board[leftOfHead][i] == boardTypes['Snake_Body'] or \
+                            board[leftOfHead][i] == boardTypes['Snake_Head']:
+                    canGoLeft = False
             if rightOfHead == len(board):
                 canGoRight = False
                 print "We are against the right wall"
+            else:
+                if board[rightOfHead][i] == boardTypes['Wall'] or board[rightOfHead][i] == boardTypes['Snake_Body'] or \
+                            board[rightOfHead][i] == boardTypes['Snake_Head']:
+                    canGoLeft = False
 
-            if board[leftOfHead][i] != boardTypes['Empty'] or board[leftOfHead][i] != boardTypes['Food'] or \
-                            board[leftOfHead][i] != boardTypes['Gold']:
-                canGoLeft = False
-            if board[rightOfHead][i] != boardTypes['Empty'] or board[rightOfHead][i] != boardTypes['Food'] or \
-                            board[rightOfHead][i] != boardTypes['Gold']:
-                canGoLeft = False
             if not canGoLeft and not canGoRight:
                 deadEndDetectedSouth = True
             else:
                 deadEndDetectedSouth = False
 
         # Check East
-        for i in xrange(head[0] + 1, len(board)):
-            print "deadend East"
-            print i
-            print head[0] + 1
-            print len(board)
-            print board[i][head[1]]
+        for i in xrange(rightOfHead, len(board)):
 
-            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body'] or board[i][head[1]] != boardTypes['Wall']:
-                distanceToBlockEast = distanceToBlockEast + 1
-            else:
+            if board[i][head[1]] == boardTypes['Snake_Head'] or board[i][head[1]] == boardTypes['Snake_Body'] or \
+                            board[i][head[1]] == boardTypes['Wall']:
                 break
-        print "distanceToBlockEast = " + str(distanceToBlockEast)
+            else:
+                distanceToBlockEast = distanceToBlockEast + 1
 
-        for i in xrange(head[0] + 1, len(board) - distanceToBlockEast):
-
+        for i in xrange(rightOfHead, rightOfHead + distanceToBlockEast):
             if not deadEndDetectedEast:
                 break
 
             canGoUp = True
             canGoDown = True
+
             if aboveHead < 0:
                 canGoUp = False
                 print "We are against the top wall"
+            else:
+                if board[i][aboveHead] == boardTypes['Wall'] or board[i][aboveHead] == boardTypes['Snake_Body'] or \
+                                board[i][aboveHead] == boardTypes['Snake_Head']:
+                    canGoUp = False
             if belowHead == len(board[0]):
                 canGoDown = False
                 print "We are against the right wall"
+            else:
+                if board[i][belowHead] == boardTypes['Wall'] or board[i][belowHead] == boardTypes['Snake_Body'] or \
+                                board[i][belowHead] == boardTypes['Snake_Head']:
+                    canGoDown = False
 
-            if board[i][aboveHead] != boardTypes['Empty'] or board[i][aboveHead] != boardTypes['Food'] or board[i][
-                aboveHead] != boardTypes['Gold']:
-                canGoUp = False
-            if board[i][belowHead] != boardTypes['Empty'] or board[i][belowHead] != boardTypes['Food'] or board[i][
-                belowHead] != boardTypes['Gold']:
-                canGoDown = False
             if not canGoUp and not canGoDown:
                 deadEndDetectedEast = True
             else:
                 deadEndDetectedEast = False
 
         # Check West
-        for i in range(head[0] - 1, -1, -1):
-            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body'] or board[i][head[1]] != boardTypes['Wall']:
-                distanceToBlockWest = distanceToBlockWest + 1
-            else:
+        for i in range(leftOfHead, -1, -1):
+            if board[i][head[1]] == boardTypes['Snake_Head'] or board[i][head[1]] == boardTypes['Snake_Body'] or \
+                            board[i][head[1]] == boardTypes['Wall']:
                 break
+            else:
+                distanceToBlockWest = distanceToBlockWest + 1
 
         distanceToBlockWest = head[0] - distanceToBlockWest
-        for i in range(head[0] - 1, distanceToBlockWest - 1, -1):
-
+        for i in range(leftOfHead, distanceToBlockWest - 1, -1):
             if not deadEndDetectedWest:
                 break
 
             canGoUp = True
             canGoDown = True
+
             if aboveHead < 0:
                 canGoUp = False
                 print "We are against the top wall"
+            else:
+                if board[i][aboveHead] == boardTypes['Wall'] or board[i][aboveHead] == boardTypes['Snake_Body'] or \
+                                board[i][aboveHead] == boardTypes['Snake_Head']:
+                    canGoUp = False
             if belowHead == len(board[0]):
                 canGoDown = False
                 print "We are against the right wall"
+            else:
+                if board[i][belowHead] == boardTypes['Wall'] or board[i][belowHead] == boardTypes['Snake_Body'] or \
+                                board[i][belowHead] == boardTypes['Snake_Head']:
+                    canGoDown = False
 
-            if board[i][aboveHead] != boardTypes['Empty'] or board[i][aboveHead] != boardTypes['Food'] or board[i][
-                aboveHead] != boardTypes['Gold']:
-                canGoUp = False
-            if board[i][belowHead] != boardTypes['Empty'] or board[i][belowHead] != boardTypes['Food'] or board[i][
-                belowHead] != boardTypes['Gold']:
-                canGoDown = False
             if not canGoUp and not canGoDown:
                 deadEndDetectedWest = True
             else:
