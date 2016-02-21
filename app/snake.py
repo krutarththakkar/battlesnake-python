@@ -42,7 +42,7 @@ class Snake():
                 elif (direction == 'west'): directions.west *= 2
             
             else:
-                if self.length <= snake.length and distanceBetweenTwoPoints(self.head, enemySnake.head) < 3:
+                if self.length <= snake.length and distanceBetweenTwoPoints(self.head, snake.head) < 3:
                    if (direction == 'north'): directions.north *= .1
                    elif (direction == 'south'): directions.south *= .1
                    elif (direction == 'east'): directions.east *= .1
