@@ -36,11 +36,8 @@ class Walls():
     		north_result = 0
     		direction.north = 0		
 
-<<<<<<< HEAD
-    	if snake_head[1] == height - 1: # head on bottom side, don't go north
-=======
     	if snake_head[1] == height - 1: # head on bottom, dont go south
->>>>>>> 7023e8df2d80ac7fca21e130dffd7c6992b800bf
+
     		south_result = 0	
     		direction.south = 0
 
