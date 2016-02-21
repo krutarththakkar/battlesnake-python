@@ -136,7 +136,7 @@ class Walls():
 
         # Check North
         for i in range(head[1] - 1, -1, -1):
-            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body']:
+            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
                 distanceToBlockNorth = distanceToBlockNorth + 1
             else:
                 break
@@ -169,7 +169,7 @@ class Walls():
 
         # Check South
         for i in xrange(head[1] + 1, len(board[0])):
-            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body']:
+            if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
                 distanceToBlockSouth = distanceToBlockSouth + 1
             else:
                 break
@@ -201,7 +201,7 @@ class Walls():
 
         # Check East
         for i in xrange(head[0] + 1, len(board)):
-            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body']:
+            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body'] or board[i][head[1]] != boardTypes['Wall']:
                 distanceToBlockEast = distanceToBlockEast + 1
             else:
                 break
@@ -233,7 +233,7 @@ class Walls():
 
         # Check West
         for i in range(head[0] - 1, -1, -1):
-            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body']:
+            if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body'] or board[i][head[1]] != boardTypes['Wall']:
                 distanceToBlockWest = distanceToBlockWest + 1
             else:
                 break
