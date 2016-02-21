@@ -4,6 +4,7 @@ from walls import *
 from utility import *
 from snake import *
 from food import *
+from gold import *
 from directions import *
 
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
