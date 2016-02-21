@@ -57,20 +57,19 @@ class Walls():
 		east = board[head[0] + 1][head[1]]
 		
 
-
-		if north == boardTypes["Snake_Body"] or north == boardTypes["Snake_Head"] :
+		if north == boardTypes["Snake_Body"] or north == boardTypes["Snake_Head"] or north == boardTypes["Wall"] :
 			direction.north = 0	
 			print "Snake north"	
 
-		if south == boardTypes["Snake_Body"] or south == boardTypes["Snake_Head"] :
+		if south == boardTypes["Snake_Body"] or south == boardTypes["Snake_Head"] or south == boardTypes["Wall"]:
 			direction.south = 0	
 			print "Snake south"	
 
-		if east == boardTypes["Snake_Body"] or east == boardTypes["Snake_Head"] :
+		if east == boardTypes["Snake_Body"] or east == boardTypes["Snake_Head"] or east == boardTypes["Wall"]:
 			direction.east = 0	
 			print "Snake east"	
 
-		if west == boardTypes["Snake_Body"] or west == boardTypes["Snake_Head"] :
+		if west == boardTypes["Snake_Body"] or west == boardTypes["Snake_Head"] or west == boardTypes["Wall"]:
 			direction.west = 0	
 			print "Snake west"							
 
