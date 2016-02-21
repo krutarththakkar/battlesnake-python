@@ -265,15 +265,19 @@ class Walls():
                 deadEndDetectedWest = False
 
         if deadEndDetectedNorth:
+            print "Dead end detect North!!"
             direction.north = 0
 
         if deadEndDetectedSouth:
+            print "Dead end detect South!!"
             direction.south = 0
 
         if deadEndDetectedEast:
+            print "Dead end detect East!!"
             direction.east = 0
 
         if deadEndDetectedWest:
+            print "Dead end detect West!!"
             direction.west = 0
 
         return direction
