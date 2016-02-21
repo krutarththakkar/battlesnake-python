@@ -218,7 +218,7 @@ class Walls():
                 distanceToBlockEast = distanceToBlockEast + 1
             else:
                 break
-        print "distanceToBlockEast = " + distanceToBlockEast
+        print "distanceToBlockEast = " + str(distanceToBlockEast)
 
         for i in xrange(head[0] + 1, len(board) - distanceToBlockEast):
 
