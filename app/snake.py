@@ -33,12 +33,13 @@ class Snake():
     def attack(self, directions, snakes):
         for snake in snakes:
             if snake.id == self.id: continue
-            if self.shouldAttack(snake): direction = self.attackDirection(snake)
+            if self.shouldAttack(snake):
+                direction = self.attackDirection(snake)
 		    
-            if (direction == 'north'): directions.north *= 2
-            elif (direction == 'south'): directions.south *= 2
-            elif (direction == 'east'): directions.east *= 2
-            elif (direction == 'west'): directions.west *= 2
+                if (direction == 'north'): directions.north *= 2
+                elif (direction == 'south'): directions.south *= 2
+                elif (direction == 'east'): directions.east *= 2
+                elif (direction == 'west'): directions.west *= 2
 			
         return directions
         
