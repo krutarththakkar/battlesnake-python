@@ -48,6 +48,7 @@ class Walls():
 
 
     def snakeCollision(self, game_json, direction, mySnake, snakes):
+<<<<<<< HEAD
     	#snakes = []
     	#for snake in data["snakes"]:
         #	snakes.append(Snake(snake))
@@ -55,6 +56,8 @@ class Walls():
         #snakes = game_json["snakes"]
         #print "len " + str(len(snakes))
         print 'Head is ' + str(mySnake.head)
+=======
+>>>>>>> 015d2e2420e43ca7db755788890ee6db45826d4d
         for s in xrange(0, len(snakes)): # for each snake in game
 			#print " snake " + " " + str(s)
 			snake = snakes[s]

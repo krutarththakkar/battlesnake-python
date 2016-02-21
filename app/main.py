@@ -10,8 +10,8 @@ from directions import *
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
 
-wantFood = 10
-wantGold = 100
+wantFood = 1
+wantGold = 5
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -70,6 +70,10 @@ def move():
     # Check for wall collision
     walls = Walls()
     directions = walls.wallCollision(data, directions, mySnake, snakes)
+    
+    ## Check for attack opportunities
+    directions = mySnake.attack(directions, snakes)
+
     directions = walls.snakeCollision(data, directions, mySnake, snakes) 
 
     print directions.toString()
