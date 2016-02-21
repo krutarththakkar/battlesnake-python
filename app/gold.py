@@ -1,9 +1,10 @@
 import json
 
 class Golds():
-	def __init__(self, golds):
+	def __init__(self, golds, wantFood):
 		print golds
 		self.golds = golds
+		self.want = wantFood
 
 	def distanceToGold(self, snake):
 		golds = []

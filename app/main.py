@@ -10,6 +10,9 @@ from directions import *
 snakeId = "72ad0c75-244b-4e30-9169-4584cf4fee28"
 boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
 
+wantFood = 10
+wantGold = 100
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -50,12 +53,12 @@ def move():
     mySnake = getSelf(snakes, snakeId)
 	
     directions = Directions()
-    foods = Foods(data['food'])
+    foods = Foods(data['food'], wantFood)
 
     directions = foods.goTowards(foods.amClosest(snakes, mySnake), directions, mySnake)
 
     if 'gold' in data:
-        golds = Golds(data['gold'])
+        golds = Foods(data['gold'], wantGold)
         directions = golds.goTowards(golds.amClosest(snakes, mySnake), directions, mySnake)
 
 

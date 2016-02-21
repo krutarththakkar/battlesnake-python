@@ -1,9 +1,10 @@
 import json
 
 class Foods():
-	def __init__(self, foods):
+	def __init__(self, foods, wantFood):
 		print foods
 		self.foods = foods
+		self.want = wantFood
 
 	def distanceToFood(self, snake):
 		foods = []
@@ -38,7 +39,7 @@ class Foods():
 		return closest
 
 	def goTowards(self, closest, direction, mySnake):
-		foodWeight = 10
+		foodWeight = self.want
 		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
 			if closest[x] >= 0:
