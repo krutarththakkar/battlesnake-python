@@ -60,6 +60,9 @@ def move():
     # Check for wall collision
     walls = Walls()
     directions = walls.wallCollision(data, directions, mySnake, snakes)
+    
+    ## Check for attack opportunities
+	directions = mySnakes.attack(directions, snakes)
 
     move = directions.bestDirection()
     return {
