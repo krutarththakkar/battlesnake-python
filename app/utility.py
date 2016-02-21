@@ -1,13 +1,14 @@
 import json
 import math
 import random
-from main import boardTypes
+
+boardTypes = {'Empty': 0, 'Wall': 1, 'Snake_Body': 2, 'Snake_Head': 3, 'Food': 4}
 
 def distanceBetweenTwoPoints(point1, point2):
-	return  (abs((point2[0] - point1[0])) + abs((point2[1] - point1[1])))
+    return  (abs((point2[0] - point1[0])) + abs((point2[1] - point1[1])))
 
 
-def createBoardObject(data):
+def createBoardObject(data, snakes):
     global boardTypes
     Board = [[0 for x in range(data["height"])] for x in range(data["width"])]
 
@@ -17,8 +18,8 @@ def createBoardObject(data):
             Board[i][j] = boardTypes['Empty']
 
     # Find Snakes
-    for snake in data["snakes"]:
-        for index, point in enumerate(snake["coords"], start=0):
+    for snake in snakes:
+        for index, point in enumerate(snake.coordinates, start=0):
             if index == 0:
                 Board[point[0]][point[1]] = boardTypes['Snake_Head']
             else:
@@ -52,11 +53,11 @@ def getTaunt():
     
     return random.choice(bieberqoutes)
 
-def whichSnake(point, data):
-    for snake in data["snakes"]:
-        for snakePoint in data["coords"]:
+def whichSnake(point, snakes):
+    for snake in snakes:
+        for snakePoint in snake.coordinates:
             if point == snakePoint:
-                return snake["id"]
+                return snake.id
                 
 def getSelf(snakes, snakeId):
     for snake in snakes:

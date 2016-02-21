@@ -47,21 +47,26 @@ def move():
         snakes.append(Snake(snake))
     
     mySnake = getSelf(snakes, snakeId)
-
+	
     directions = Directions()
     foods = Foods(data['food'])
 
-    directions = foods.goTowards(foods.amClosest(data['snakes'], mySnake), directions, mySnake)
+    directions = foods.goTowards(foods.amClosest(snakes, mySnake), directions, mySnake)
+
 
     # Access board data as 2d array Board[][]
     # Use boardTypes to determine objects on board
-    Board = createBoardObject(data)
+    Board = createBoardObject(data, snakes)
 
     # Check for wall collision
     walls = Walls()
-    directions = walls.wallCollision(data, directions, mySnake)
+    directions = walls.wallCollision(data, directions, mySnake, snakes)
+    directions = walls.snakeCollision(data, directions, mySnake, snakes) 
+
+    print directions.toString()
 
     move = directions.bestDirection()
+    print move
     return {
         'move': move,
         'taunt': str(getTaunt())
