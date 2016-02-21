@@ -39,7 +39,7 @@ class Foods():
 		return closest
 
 	def goTowards(self, closest, direction, mySnake):
-		foodWeight = self.want
+		foodWeight = 10
 		head = mySnake.head
 		for x in xrange(0, len(self.foods)):
 			if closest[x] >= 0:

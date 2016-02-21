@@ -61,6 +61,7 @@ def move():
         golds = Foods(data['gold'], wantGold)
         directions = golds.goTowards(golds.amClosest(snakes, mySnake), directions, mySnake)
 
+    print directions.toString()
 
 
     # Access board data as 2d array Board[][]
