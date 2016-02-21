@@ -48,12 +48,6 @@ class Walls():
 
 
     def snakeCollision(self, game_json, direction, mySnake, snakes):
-    	#snakes = []
-    	#for snake in data["snakes"]:
-        #	snakes.append(Snake(snake))
-
-        #snakes = game_json["snakes"]
-        #print "len " + str(len(snakes))
         for s in xrange(0, len(snakes)): # for each snake in game
 			#print " snake " + " " + str(s)
 			snake = snakes[s]
