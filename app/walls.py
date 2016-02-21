@@ -54,6 +54,7 @@ class Walls():
 
         #snakes = game_json["snakes"]
         #print "len " + str(len(snakes))
+        print mySnake.head
         for s in xrange(0, len(snakes)): # for each snake in game
 			#print " snake " + " " + str(s)
 			snake = snakes[s]
