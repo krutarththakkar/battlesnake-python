@@ -14,6 +14,8 @@ class Walls():
 		#snake_head = our_snake["coords"][0]
 		#print "head " + str(snake_head)
 		snake_head = mySnake.head
+		if len(snake_head) < 2:
+			return direction
 
 		width = game_json["width"]
 		height = game_json["height"]
@@ -47,14 +49,29 @@ class Walls():
 
 
 
-	def snakeCollision(self, board, direction, mySnake):
-		print "head " + str(mySnake.head[0]) +  " " + str(mySnake.head[1])
+	def snakeCollision(self, game_json, board, direction, mySnake):
+		#if snake_head or len(snake_head) < 2:
+		#	return direction
+		#print "head " + str(mySnake.head[0]) +  " " + str(mySnake.head[1])
+
+		width = game_json["width"]
+		height = game_json["height"]
+
 		head = [mySnake.head[0], mySnake.head[1]]
 
-		north = board[head[0]][head[1] - 1]
-		south = board[head[0]][head[1] + 1]
-		west = board[head[0] - 1][head[1]]
-		east = board[head[0] + 1][head[1]]
+		north = ""
+		south = ""
+		east = ""
+		west = ""
+
+		if head[1] > 0:
+			north = board[head[0]][head[1] - 1]
+		if head[1] < height - 1:
+			south = board[head[0]][head[1] + 1]
+		if head[0] > 0:
+			west = board[head[0] - 1][head[1]]
+		if head[0] < width - 1:
+			east = board[head[0] + 1][head[1]]
 		
 
 		if north == boardTypes["Snake_Body"] or north == boardTypes["Snake_Head"] or north == boardTypes["Wall"] :
