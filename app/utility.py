@@ -37,6 +37,14 @@ def createBoardObject(data):
     else:
         print "No Walls object, must be a classic games"
 
+    # Find Walls
+    if "gold" in data:
+        for gold in data["gold"]:
+            print gold
+            Board[gold[0]][gold[1]] = boardTypes['Gold']
+    else:
+        print "No Walls object, must be a classic games"
+
     return Board
 
 def getTaunt():
