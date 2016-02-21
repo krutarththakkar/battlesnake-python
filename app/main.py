@@ -51,10 +51,12 @@ def move():
 	
     directions = Directions()
     foods = Foods(data['food'])
-    golds = Golds(data['gold'])
 
     directions = foods.goTowards(foods.amClosest(snakes, mySnake), directions, mySnake)
-    directions = golds.goTowards(golds.amClosest(snakes, mySnake), directions, mySnake)
+
+    if 'gold' in data:
+        golds = Golds(data['gold'])
+        directions = golds.goTowards(golds.amClosest(snakes, mySnake), directions, mySnake)
 
 
 
