@@ -170,11 +170,11 @@ class Walls():
         # Check South
 
         for i in xrange(head[1] + 1, len(board[0])):
-            print "deadend South"
-            print i
-            print head[1] + 1
-            print len(board[0])
-            print board[head[0]][i]
+            #print "deadend South"
+            #print i
+            #print head[1] + 1
+            #print len(board[0])
+            #print board[head[0]][i]
 
             if board[head[0]][i] != boardTypes['Snake_Head'] or board[head[0]][i] != boardTypes['Snake_Body'] or board[head[0]][i] != boardTypes['Wall']:
                 distanceToBlockSouth = distanceToBlockSouth + 1
@@ -208,10 +208,17 @@ class Walls():
 
         # Check East
         for i in xrange(head[0] + 1, len(board)):
+            print "deadend East"
+            print i
+            print head[0] + 1
+            print len(board)
+            print board[i][head[1]]
+
             if board[i][head[1]] != boardTypes['Snake_Head'] or board[i][head[1]] != boardTypes['Snake_Body'] or board[i][head[1]] != boardTypes['Wall']:
                 distanceToBlockEast = distanceToBlockEast + 1
             else:
                 break
+        print "distanceToBlockEast = " + distanceToBlockEast
 
         for i in xrange(head[0] + 1, len(board) - distanceToBlockEast):
 
