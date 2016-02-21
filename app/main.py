@@ -65,6 +65,7 @@ def move():
     print directions.toString()
 
     move = directions.bestDirection()
+    print move
     return {
         'move': move,
         'taunt': str(getTaunt())
