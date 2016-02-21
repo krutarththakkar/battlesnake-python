@@ -121,10 +121,10 @@ class Walls():
 
     def deadEndDetection(self, board, mySnake, direction):
         head = mySnake.head
-        leftOfHead = mySnake[0] - 1
-        rightOfHead = mySnake[0] + 1
-        aboveHead = mySnake[1] - 1
-        belowHead = mySnake[1] + 1
+        leftOfHead = head[0] - 1
+        rightOfHead = head[0] + 1
+        aboveHead = head[1] - 1
+        belowHead = head[1] + 1
         deadEndDetectedNorth = True
         deadEndDetectedSouth = True
         deadEndDetectedEast = True
